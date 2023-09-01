@@ -1,0 +1,129 @@
+<mat-card class="mat-card">
+    <mat-card-content>
+        <h2>Children Bank User Registration</h2>
+        <form class="example-form" [formGroup]="childrenRegistrationForm" (ngSubmit)="proceedregister()">
+            <mat-form-field class="example-full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" placeholder="Enter your first name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Middle Name</mat-label>
+                <input matInput formControlName="middleName" placeholder="Enter your middle name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" placeholder="Enter your last name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Father/Mother/Guardian</mat-label>
+                <mat-select formControlName="relationship">
+                    <mat-option value="father">Father</mat-option>
+                    <mat-option value="mother">Mother</mat-option>
+                    <mat-option value="guardian">Guardian</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- Father's Details Section -->
+            <div *ngIf="childrenRegistrationForm?.get('relationship')?.value === 'father'">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Father's Name</mat-label>
+                    <input matInput formControlName="RelationshipPersonsName" placeholder="Enter your father name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Father's Occupation</mat-label>
+                    <input matInput formControlName="RelationshipPersonsOccupation" placeholder="Enter your father Occupation">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Father's Mobile Number</mat-label>
+                    <input matInput formControlName="RelationshipPersonsMobileNumber" placeholder="Enter the father mobile number">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Father Email id</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Enter your father email id">
+                </mat-form-field>
+            </div>
+            <!-- Mother's Details Section -->
+            <div *ngIf="childrenRegistrationForm.get('relationship')?.value === 'mother'">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mother's Name</mat-label>
+                    <input matInput formControlName="RelationshipPersonsName" placeholder="Enter your mother name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mother's Occupation</mat-label>
+                    <input matInput formControlName="RelationshipPersonsOccupation" placeholder="Enter your mother occupation">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mother's Mobile Number</mat-label>
+                    <input matInput formControlName="RelationshipPersonsMobileNumber" placeholder="Enter your mother mobile number">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mother Email id</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Enter your mother email id">
+                </mat-form-field>
+            </div>
+            <!-- Guardian's Details Section -->
+            <div *ngIf="childrenRegistrationForm.get('relationship')?.value === 'guardian'">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Guardian's Name</mat-label>
+                    <input matInput formControlName="RelationshipPersonsName" placeholder="Enter your Guardian's Name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Guardian's Occupation</mat-label>
+                    <input matInput formControlName="RelationshipPersonsOccupation" placeholder="Enter your Guardian's Occupation">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Guardian's Mobile Number</mat-label>
+                    <input matInput formControlName="RelationshipPersonsMobileNumber" placeholder="Enter your Guardian mobile number">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Guardian Email id</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Enter your Guardian mail id">
+                </mat-form-field>
+            </div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" placeholder="Enter your password">
+            </mat-form-field>
+            <!-- <mat-form-field class="example-full-width">
+                <mat-label>Re Enter the Password</mat-label>
+                <input matInput type="password" formControlName="confirmPassword" placeholder="Enter the password again">
+            </mat-form-field> -->
+            <mat-form-field class="example-full-width">
+              <mat-label>Re Enter the Password</mat-label>
+              <input matInput type="password" formControlName="confirmPassword" placeholder="Enter the password again">
+              <mat-error *ngIf="childrenRegistrationForm.hasError('mismatch', 'confirmPassword')">
+                  Passwords do not match.
+              </mat-error>
+          </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput formControlName="dateofbirth" formControlName="dateofbirth"
+                    placeholder=" dd/mm/yyyy">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Aadhar Card</mat-label>
+                <input matInput formControlName="aadhar" placeholder="Enter your aadhar card number">
+            </mat-form-field>
+            <mat-radio-group formControlName="gender" aria-label="Select an option">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="address" placeholder="Enter your address"></textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Branch Name</mat-label>
+                <input matInput formControlName="branchName" placeholder="Enter your Branch Name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Branch Code</mat-label>
+                <input matInput formControlName="branchCode" placeholder="Enter your Branch code">
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary">Submit</button>
+                <span class="space"></span>
+                  <a routerLink="/login" mat-raised-button color="primary">back to login</a>
+            </div>
+        </form>
+    </mat-card-content>
+  </mat-card>

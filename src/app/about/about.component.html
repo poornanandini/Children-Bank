@@ -1,0 +1,74 @@
+<div class="container">
+    <mat-card class="about-card">
+        <mat-toolbar color="primary" style="margin-bottom: 4%;">
+            <span>About Children Bank</span>
+        </mat-toolbar>
+        <mat-card-content>
+            <div class="intro">
+                <p>
+                    Welcome to Children Bank, where financial education meets fun! We believe that early
+                    exposure to financial concepts sets a strong foundation for a successful financial future.
+                    Our goal is to provide children with valuable lessons in money management through engaging
+                    activities and interactive learning.
+                </p>
+
+                <p>
+                    As a trusted partner of <strong>government programs</strong>, we collaborate to bring financial
+                    literacy directly to young citizens. Our platform is designed to support initiatives that enable
+                    kids to grow into financially responsible adults who contribute positively to society.
+                    In partnership with government initiatives, Children Bank provides access to special
+                    financial literacy programs for young citizens. Our platform supports government schemes
+                    aimed at empowering children with knowledge about savings, investments, and planning for
+                    their future. By participating in these programs, kids can grow into financially
+                    responsible adults, contributing positively to the economy.
+                </p>
+            </div>
+            <div class="animation-container">
+                <div class="animation-box" [@fadeInOut]>
+                    <img class="image" src="https://cdn.pixabay.com/photo/2022/05/10/09/49/children-7186580_1280.jpg">
+                    <img class="image"
+                        src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hpbGRyZW4lMjBwbGF5aW5nfGVufDB8fDB8fHww&w=1000&q=80">
+                    <img class="image" src="https://cdn.wallpapersafari.com/72/87/8wBigF.jpg">
+                </div>
+            </div>
+            <h2>Government Schemes</h2>
+            <table mat-table [dataSource]="schemes" class="mat-elevation-z8" style="margin-bottom: 4%;">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let scheme"><b>
+                            <a *ngIf="scheme.name === 'Sukanya Samriddhi Yojana'"
+                                href="https://transformingindia.mygov.in/scheme/sukanya-samriddhi-yojana/">{{scheme.name}}</a>
+                            <span *ngIf="scheme.name !== 'Sukanya Samriddhi Yojana'">{{ scheme.name }}</span>
+                            <!-- <a routerLink="https://leetcode.com/">{{scheme.name}}</a> -->
+                        </b></td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef>Description</th>
+                    <td mat-cell *matCellDef="let scheme">{{ scheme.description }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <p>
+                Our team of experts has designed a range of games, workshops, and online resources to help
+                kids learn about budgeting, saving, and responsible spending in an enjoyable way. We believe
+                that learning about money should be an exciting adventure, and we're here to make that happen.
+                At Children Bank, safety is our top priority. We've implemented strict security measures to
+                ensure that children can explore the world of banking in a secure and controlled environment.
+                Parents can monitor their child's progress and guide them through their financial journey.
+            </p>
+            <div style="text-align: center; margin-top: 3%;">
+                <p>
+                    <b><i>Join us on this educational expedition, and let's pave the way for a financially literate
+                            generation that's ready to conquer the future!</i> </b>
+                </p>
+            </div>
+        </mat-card-content>
+        <mat-toolbar class="submitButton">
+            <button mat-raised-button routerLink="/" color="primary" style="background-color: #03C03C;">Back to
+                Home</button>
+        </mat-toolbar>
+    </mat-card>
+</div>
